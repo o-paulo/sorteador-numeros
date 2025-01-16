@@ -6,18 +6,21 @@ function sortear(){
     let sorteados = []
     let numero
 
-    for(let i = '0'; i < quantidade; i++){
-        numero = obterNumeroAleatorio(de, ate)
-        sorteados.push(numero)
-
-        while(sorteados.includes(numero)){
-            numero = obterNumeroAleatorio(de, ate) // Este bloco WHILE nao permite que os numeros sejam repetidos
-        }
-
-        document.getElementById('resultado').innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`
-
-    }
+    if(de > ate){ //Verifica se o numero DE é maior que o ATÉ....... Tambem seria possivel, ao final desse if, colocar um return, sem precisar colocar o else.
+        alert("'Do numero' nao pode ser maior que 'Ate o numero'")
+    } else {
+        for(let i = 0; i < quantidade; i++){
+            numero = obterNumeroAleatorio(de, ate)
+            sorteados.push(numero)
     
+            while(sorteados.includes(numero)){
+                numero = obterNumeroAleatorio(de, ate) // Este bloco WHILE nao permite que os numeros sejam repetidos    
+            }
+    
+            document.getElementById('resultado').innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`
+        }
+    }
+
     alterarStatusBotao()
 }
 
